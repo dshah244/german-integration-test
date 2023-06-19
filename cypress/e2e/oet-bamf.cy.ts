@@ -1,7 +1,7 @@
 
 const baseUrl = 'https://oet.bamf.de/ords/oetut/f?p=514:1:15762836149516:::::';
 const startQuestion = <number>Cypress.env('startQuestion');
-const endQuestion = <number>Cypress.env('endQuestion') + 1;
+const endQuestion = <number>Cypress.env('endQuestion');
 let arrayQuestionsDone: number[] = []
 
 
