@@ -40,7 +40,7 @@ function questionPerformed(questionId: number, arrayQuestionsDone: number[]): bo
 
 
 describe('browse through questions', function () {
-  beforeEach(function () {
+  before(function () {
     cy.visit(baseUrl);
     cy.get('#P1_BUL_ID').select(<string>Cypress.env('region'));
     cy.get('input[value="Zum Fragenkatalog"]').click();
@@ -53,6 +53,7 @@ describe('browse through questions', function () {
       }
       it(`Random question: ${questionId}`, function () {
         cy.get('#P30_ROWNUM').select(`${questionId}`);
+        cy.wait(1);
         cy.contains(
           'richtige Antwort =>',
           {timeout: <number>Cypress.env('timeout') * 1000}
