@@ -54,6 +54,7 @@ describe('browse through questions', function () {
           'richtige Antwort =>',
           {timeout: <number>Cypress.env('timeout') * 1000}
         ).should('not.be.hidden');
+        cy.wait(<number>Cypress.env('timeoutReviewAnswer') * 1000);
       });
     }
   });
