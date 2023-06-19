@@ -1,8 +1,7 @@
 
 const baseUrl = 'https://oet.bamf.de/ords/oetut/f?p=514:1:15762836149516:::::';
-const startQuestion = 1;
-const endQuestion = 311;
-let counter: number = 1
+const startQuestion = <number>Cypress.env('startQuestion');
+const endQuestion = <number>Cypress.env('endQuestion') + 1;
 let arrayQuestionsDone: number[] = []
 
 
@@ -43,7 +42,7 @@ function questionPerformed(questionId: number, arrayQuestionsDone: number[]): bo
 describe('browse through questions', function () {
   beforeEach(function () {
     cy.visit(baseUrl);
-    cy.get('#P1_BUL_ID').select('Bayern');
+    cy.get('#P1_BUL_ID').select(<string>Cypress.env('region'));
     cy.get('input[value="Zum Fragenkatalog"]').click();
   });
   context('Answer questions', function () {
@@ -51,7 +50,10 @@ describe('browse through questions', function () {
       let questionId = uniqueRandomQuestionId(arrayQuestionsDone);
       it(`Random question: ${questionId}`, function () {
         cy.get('#P30_ROWNUM').select(`${questionId}`);
-        cy.contains('richtige Antwort =>').should('not.be.hidden');
+        cy.contains(
+          'richtige Antwort =>',
+          {timeout: <number>Cypress.env('timeout') * 1000}
+        ).should('not.be.hidden');
       });
     }
   });
