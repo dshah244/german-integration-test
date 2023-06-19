@@ -6,7 +6,7 @@
     "strict": true,
     "esModuleInterop": true,
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./cypress"
   },
   "include": ["src/**/*.ts", "cypress/**/*.ts"],
   "exclude": ["node_modules"]
