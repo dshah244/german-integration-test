@@ -47,7 +47,10 @@ describe('browse through questions', function () {
   });
   context('Answer questions', function () {
     for (let id = startQuestion; id <= endQuestion; id++) {
-      let questionId = uniqueRandomQuestionId(arrayQuestionsDone);
+      let questionId = id
+      if (<boolean>Cypress.env('randomize')) {
+        questionId = uniqueRandomQuestionId(arrayQuestionsDone);
+      }
       it(`Random question: ${questionId}`, function () {
         cy.get('#P30_ROWNUM').select(`${questionId}`);
         cy.contains(
