@@ -24,7 +24,7 @@ npm install .
 ```
 npm run cy:open
 ```
-, and choose any browser of your liking.
+, select `E2E Testing`, choose any browser of your liking, start the tests, and finally click on `oet-bamf`.
 
 
 **NOTE**: If you are using WSL, you would need to install and enable X-server.
