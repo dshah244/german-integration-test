@@ -1,9 +1,11 @@
-# Introdcution
+# Introduction
 
-Prepare for German integration test by using the code present within this repository to practice 300+ questions provided to us. The code takes care of presenting the questions to the person practising in an automated and random manner.
+Prepare for German integration test by using Cypress.
+There are 300+ questions which are provided to a person for practising purposes.
 
-By default, the person then has 30 seconds to answer a question and 2 seconds to review the answer.
-The questions are presented to the person in a random manner.
+Cypress is used to automate everything BUT selecting the answer to a question.
+The questions can be presented in a serial or in a random manner.
+By default, a person has 30 seconds to answer a question and 5 seconds to review the answer.
 
 Visit [configuration](./cypress.env.json) file to find out the different manners in which to interact with the questionnaire.
 
@@ -25,3 +27,4 @@ npm run cy:open
 , and choose any browser of your liking.
 
 
+**NOTE**: If you are using WSL, you would need to install and enable X-server.
