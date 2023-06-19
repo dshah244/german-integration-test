@@ -51,8 +51,8 @@ describe('browse through questions', function () {
       if (<boolean>Cypress.env('randomize')) {
         questionId = uniqueRandomQuestionId(arrayQuestionsDone);
       }
-      it(`Random question: ${questionId}`, function () {
-        cy.get('#P30_ROWNUM').select(`${questionId}`);
+      it(`Question ${questionId}`, function () {
+        cy.get('#P30_ROWNUM').select(`${questionId}`, {force: true});
         cy.wait(1);
         cy.contains(
           'richtige Antwort =>',
