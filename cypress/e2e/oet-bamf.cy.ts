@@ -14,7 +14,7 @@ function uniqueRandomQuestionId(questionsDone: number[]): number {
 }
 
 function randomQuestionId(): number {
-  return Math.round(( (Math.random()* 1000) / 1000 ) * (endQuestion - startQuestion)) + startQuestion;
+  return Math.round( Math.random() * (endQuestion - startQuestion)) + startQuestion;
 }
 
 describe('browse through questions', function () {
