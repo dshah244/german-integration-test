@@ -2,12 +2,12 @@
 const baseUrl = 'https://oet.bamf.de/ords/oetut/f?p=514:1:15762836149516:::::';
 const startQuestion = <number>Cypress.env('startQuestion');
 const endQuestion = <number>Cypress.env('endQuestion');
-let arrayQuestionsDone: number[] = []
+let questionsDone: number[] = []
 
 
-function uniqueRandomQuestionId(arrayQuestionsDone: number[]): number {
+function uniqueRandomQuestionId(questionsDone: number[]): number {
   let questionId =  randomQuestionId();
-  while (arrayQuestionsDone.includes(questionId)) {
+  while (questionsDone.includes(questionId)) {
     questionId =  randomQuestionId();
   }
   return questionId
@@ -27,9 +27,9 @@ describe('browse through questions', function () {
     for (let id = startQuestion; id <= endQuestion; id++) {
       let questionId = id
       if (<boolean>Cypress.env('randomize')) {
-        questionId = uniqueRandomQuestionId(arrayQuestionsDone);
+        questionId = uniqueRandomQuestionId(questionsDone);
       }
-      arrayQuestionsDone.push(questionId);
+      questionsDone.push(questionId);
 
       it(`${id}: Question ${questionId}`, function () {
         cy.get('#P30_ROWNUM').select(`${questionId}`, {force: true});
