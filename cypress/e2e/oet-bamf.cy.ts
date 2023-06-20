@@ -7,29 +7,14 @@ let arrayQuestionsDone: number[] = []
 
 function uniqueRandomQuestionId(arrayQuestionsDone: number[]): number {
   let questionId =  randomQuestionId();
-  while (true) {
-    if (questionPerformed(questionId, arrayQuestionsDone)) {
-      questionId =  randomQuestionId();
-    }
-    else {
-      break;
-    }
+  while (arrayQuestionsDone.includes(questionId)) {
+    questionId =  randomQuestionId();
   }
   return questionId
 }
 
 function randomQuestionId(): number {
-  return Math.floor(Math.random() * (endQuestion - startQuestion) + startQuestion)
-}
-
-function questionPerformed(questionId: number, arrayQuestionsDone: number[]): boolean {
-  for (var oneQuestionId of arrayQuestionsDone) {
-    if (oneQuestionId === questionId) {
-      // return true if question is already answered.
-      return true
-    }
-  }
-  return false;
+  return Math.round(( (Math.random()* 1000) / 1000 ) * (endQuestion - startQuestion)) + startQuestion;
 }
 
 describe('browse through questions', function () {
@@ -44,6 +29,8 @@ describe('browse through questions', function () {
       if (<boolean>Cypress.env('randomize')) {
         questionId = uniqueRandomQuestionId(arrayQuestionsDone);
       }
+      arrayQuestionsDone.push(questionId);
+
       it(`${id}: Question ${questionId}`, function () {
         cy.get('#P30_ROWNUM').select(`${questionId}`, {force: true});
         cy.wait(1);
