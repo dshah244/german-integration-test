@@ -32,13 +32,6 @@ function questionPerformed(questionId: number, arrayQuestionsDone: number[]): bo
   return false;
 }
 
-// for (let id = 1; id <= 310; id++) {
-//   let questionId = uniqueRandomQuestionId(arrayQuestionsDone)
-//   arrayQuestionsDone.push(questionId);
-//   console.log(`questionId: ${questionId}`);
-// }
-
-
 describe('browse through questions', function () {
   before(function () {
     cy.visit(baseUrl);
