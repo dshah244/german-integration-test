@@ -4,30 +4,46 @@ const startQuestion = <number>Cypress.env('startQuestion');
 const endQuestion = <number>Cypress.env('endQuestion');
 let questionsDone: number[] = []
 
-
-function uniqueRandomQuestionId(questionsDone: number[]): number {
-  let questionId =  randomQuestionId();
+/**
+ * Return unique random question ID from a list of questions.
+ * @param startQuestionNumber Start question number from list of 310 questions.
+ * @param endQuestionNumber End question number from list of 310 questions.
+ * @param questionsDone List consisting of uniques question IDs already covered.
+ * @returns
+ */
+function uniqueRandomQuestionId(
+  startQuestionNumber: number,
+  endQuestionNumber: number,
+  questionsDone: number[]
+): number {
+  let questionId =  _randomizeId(startQuestionNumber, endQuestionNumber);
   while (questionsDone.includes(questionId)) {
-    questionId =  randomQuestionId();
+    questionId =  _randomizeId(startQuestionNumber, endQuestionNumber);
   }
   return questionId
 }
 
-function randomQuestionId(): number {
-  return Math.round( Math.random() * (endQuestion - startQuestion)) + startQuestion;
+/**
+ * Return a random number present within the range of provided IDs.
+ * @param startId
+ * @param endId
+ * @returns
+ */
+function _randomizeId(startId: number, endId: number): number {
+  return Math.round( Math.random() * (endId - startId)) + startId;
 }
 
-describe('browse through questions', function () {
+describe('Integration questions', function () {
   before(function () {
     cy.visit(baseUrl);
     cy.get('#P1_BUL_ID').select(<string>Cypress.env('region'));
     cy.get('input[value="Zum Fragenkatalog"]').click();
   });
-  context('Answer questions', function () {
+  context('Questions list', function () {
     for (let id = startQuestion; id <= endQuestion; id++) {
       let questionId = id
       if (<boolean>Cypress.env('randomize')) {
-        questionId = uniqueRandomQuestionId(questionsDone);
+        questionId = uniqueRandomQuestionId(startQuestion, endQuestion, questionsDone);
       }
       questionsDone.push(questionId);
 
