@@ -55,8 +55,19 @@ describe('Integration questions', function () {
 
   context('Questions list', function () {
     for (let id = ui.startQuestion; id <= ui.endQuestion; id++) {
+      // model test OFF + randomize OFF
       let questionId = id
-      if (ui.randomizeQuestions) {
+      if (ui.modelTest) {
+        // model test ON
+        if (id <= 30) {
+          // 30 general questions
+          questionId = uniqueRandomQuestionId(info.minQuestionId, info.generalQuestions, questionsDone);
+        } else {
+          // 3 state specific questions
+          questionId = uniqueRandomQuestionId(info.generalQuestions + 1, info.maxQuestionId, questionsDone);
+        }
+      } else if (ui.randomizeQuestions) {
+        // model test OFF + randomize ON
         questionId = uniqueRandomQuestionId(ui.startQuestion, ui.endQuestion, questionsDone);
       }
       questionsDone.push(questionId);
