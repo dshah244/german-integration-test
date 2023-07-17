@@ -8,8 +8,7 @@ Cypress is used to automate everything BUT selecting the answer to a question. F
 - Sorting the questions in a serial or in a random manner.
 - Limiting the total number of questions to be practiced
 - Answering a question in a time limited manner.
-
-By default, a person has 30 seconds to answer a question and 5 seconds to review the answer, which could be changed.
+- Model test mode.
 
 Visit [configuration](./cypress.env.json) file to find out the different manners in which to interact with the questionnaire.
 
@@ -36,6 +35,38 @@ click on 'E2E Testing'
 ```
 
 Upon clicking on `oet-bamf.cy.ts`, the interface would start where the questions could be interacted with.
+
+## Scenarios
+
+Two scenarios are possible for practicing the questions
+
+### General practice
+
+User can define the details, such as
+
+- German state in which the exam is being provided.
+- range of questions, which need to be practiced, default 1-310.
+- time in seconds to answer a question, default 30 seconds.
+- time in seconds to review an answer, default 5 seconds.
+- randomization of the questions, default false.
+
+, within the [environment](./cypress.env.json) file.
+
+### Model test
+
+Model test mode can be enabled to practice the questions as well.
+To enable the mode, `modelTest` should be set to `true` within the [environment](./cypress.env.json) file.
+
+In this mode, environment settings such as
+
+- range of questions
+- time to answer a question
+- randomization of questions
+
+, are **overridden**.
+
+33 random questions are chosen from 310 available questions for the provided German state.
+~100 seconds are provided for a person to answer one question and ~10 seconds to review an answer, so that the user has a maximum time of 60 minutes to answer the questions.
 
 ## Notes
 
