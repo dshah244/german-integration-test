@@ -1,5 +1,8 @@
 
 const baseUrl = 'https://oet.bamf.de/ords/oetut/f?p=514:1:15762836149516:::::';
+const minQuestionId = 1;
+const maxQuestionId = 310;
+
 const startQuestion = <number>Cypress.env('startQuestion');
 const endQuestion = <number>Cypress.env('endQuestion');
 let questionsDone: number[] = []
@@ -33,12 +36,25 @@ function _randomizeId(startId: number, endId: number): number {
   return Math.round( Math.random() * (endId - startId)) + startId;
 }
 
+describe('Validate user inputs', function () {
+  it('Range: Questions', function () {
+    expect(startQuestion).lessThan(endQuestion);
+
+    // Questions between 1-310
+    expect(startQuestion).greaterThan(minQuestionId - 1);
+    expect(endQuestion).greaterThan(minQuestionId - 1);
+    expect(startQuestion).lessThan(maxQuestionId + 1);
+    expect(endQuestion).lessThan(maxQuestionId + 1);
+  })
+})
+
 describe('Integration questions', function () {
   before(function () {
     cy.visit(baseUrl);
     cy.get('#P1_BUL_ID').select(<string>Cypress.env('region'));
     cy.get('input[value="Zum Fragenkatalog"]').click();
   });
+
   context('Questions list', function () {
     for (let id = startQuestion; id <= endQuestion; id++) {
       let questionId = id
