@@ -14,7 +14,15 @@ Visit [configuration](./cypress.env.json) file to find out the different manners
 
 ## Setup
 
-You need to have [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed within your system. After the installation, clone the repository into your local workspace and simply run
+Clone or download the repository(using Github GUI) into the local workspace and navigate into it
+
+```bash
+git clone git@github.com:dshah244/german-integration-test.git
+cd german-integration-test
+```
+
+For the next step, you need to have [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed within your system.
+Install the NPM dependencies required for the project.
 
 ```bash
 npm install .
@@ -26,7 +34,7 @@ npm install .
 npm run cy:open
 ```
 
-A window would open where you could perform the following steps
+A window would open where you could interact with elements
 
 ```bash
 click on 'E2E Testing'
