@@ -65,8 +65,8 @@ In this mode, environment settings such as
 
 , are **overridden**.
 
-33 random questions are chosen from 310 available questions for the provided German state.
-~100 seconds are provided for a person to answer one question and ~10 seconds to review an answer, so that the user has a maximum time of 60 minutes to answer the questions.
+33 random questions are chosen from 310 available questions. 30 questions are general questions and the last three questions are state-specific questions.
+~110 seconds are provided for a person to answer and review one question, so that the user has a maximum time of 60 minutes to answer the questions.
 
 ## Notes
 
