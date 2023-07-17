@@ -50,14 +50,14 @@ User can define the details, such as
 - time in seconds to review an answer, default 5 seconds.
 - randomization of the questions, default false.
 
-, within the [environment](./cypress.env.json) file.
+, within the [configuration](./cypress.env.json) file.
 
 ### Model test
 
 Model test mode can be enabled to practice the questions as well.
-To enable the mode, `modelTest` should be set to `true` within the [environment](./cypress.env.json) file.
+To enable the mode, `modelTest` should be set to `true` within the [configuration](./cypress.env.json) file.
 
-In this mode, environment settings such as
+In this mode, configuration settings such as
 
 - range of questions
 - time to answer a question
