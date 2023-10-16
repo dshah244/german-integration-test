@@ -14,21 +14,38 @@ Visit [configuration](./cypress.env.json) file to find out the different manners
 
 ## Setup
 
-Clone or download the repository(using Github GUI) into the local workspace and navigate into it
+### Step-1
+
+Clone the repository(using Github GUI) into the local workspace and navigate into it
 
 ```bash
 git clone git@github.com:dshah244/german-integration-test.git
 cd german-integration-test
 ```
 
-For the next step, you need to have [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed within your system.
-Install the NPM dependencies required for the project.
+OR
+
+Download the [zip-file](https://github.com/dshah244/german-integration-test/archive/refs/heads/main.zip) and extract it using 'Extract here' option.
+
+### Step-2
+
+For this step, you need to have [Node.js]([https://nodejs.org/en/download] installed within your system.
+
+From the Command Line Interface(CLI) in Windows or Unix systems, install the NPM dependencies required for the project.
 
 ```bash
+# Unix
+cd path/to/cloned/repository/or/unzipped/directory
+npm install .
+
+# Windows
+cd path\to\cloned\repository\or\unzipped\directory
 npm install .
 ```
 
-, after which run
+### Step-3
+
+Make sure you have Chrome or Firefox installed within your system. Run the command in the CLI
 
 ```bash
 npm run cy:open
