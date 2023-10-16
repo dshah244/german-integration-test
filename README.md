@@ -29,7 +29,7 @@ Download the [zip-file](https://github.com/dshah244/german-integration-test/arch
 
 ### Step-2
 
-For this step, you need to have [Node.js][https://nodejs.org/en/download] installed within your system.
+For this step, you need to have [Node.js](https://nodejs.org/en/download) installed within your system.
 
 From the Command Line Interface(CLI) in Windows or Unix systems, install the NPM dependencies required for the project.
 
